@@ -21,6 +21,8 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Test application
       run: mvn -B verify --file pom.xml
+    - name: Test application
+      run: mvn surefire-report:report   
     - name: Upload Verify Artifact
       uses: actions/upload-artifact@v2
       with:
