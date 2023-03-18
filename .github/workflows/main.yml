@@ -3,19 +3,17 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Test
         uses: ./test.yml
 
   build:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Build
         uses: ./build.yml
