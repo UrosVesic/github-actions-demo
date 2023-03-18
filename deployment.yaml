@@ -2,12 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "1"
-  labels:
-    app: auth-service
-  name: auth-service
-  namespace: default
+  name: github-actions-demo
 spec:
   replicas: 2
   selector:
