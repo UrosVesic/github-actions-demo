@@ -8,6 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Test
         uses: ./test.yml
 
@@ -15,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Build
         uses: ./build.yml
 
