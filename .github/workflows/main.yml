@@ -28,5 +28,25 @@ jobs:
       with:
        name: target-verify
        path: target/
+       
+  coverage:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Generate Jacoco Report
+      run: mvn jacoco:prepare-agent test jacoco:report
+    - name: Upload Coverage Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: target/site/jacoco/
 
 
